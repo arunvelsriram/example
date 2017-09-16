@@ -18,7 +18,7 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: rvm 2.4.1 do which fpm
+  script: rvm 2.4.1 do curl -sL https://git.io/goreleaser | bash
   on:
     tags: true
 notifications:
