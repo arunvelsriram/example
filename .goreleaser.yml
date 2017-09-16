@@ -29,5 +29,6 @@ fpm:
     - git
 snapcraft:
   summary: GoReleaser example repository
+  description: GoReleaser example repository
   grade: stable
   confinement: classic
