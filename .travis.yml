@@ -9,6 +9,7 @@ install:
 script:
   - go test ./...
 deploy:
+  skip_cleanup: true
   provider: script
   install:
     - gem install fpm
