@@ -1,0 +1,22 @@
+dist: trusty
+sudo: required
+language: go
+go: 1.9
+services:
+  - docker
+install:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - gem install fpm
+  - sudo apt-get update
+  - sudo apt-get install --yes snapd rpm
+  - export PATH=/snap/bin:$PATH
+  - sudo snap install snapcraft --candidate --classic
+script:
+  - go test ./...
+deploy:
+  provider: script
+  script: curl -sL https://git.io/goreleaser | bash
+  on:
+    tags: true
+notifications:
+  email: false
