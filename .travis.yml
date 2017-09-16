@@ -4,19 +4,18 @@ language: go
 go: 1.9
 services:
   - docker
-install:
+install: go get ./...
+script: go test ./...
+before_deploy:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-script:
-  - go test ./...
+  - gem install fpm
+  - sudo apt-get update
+  - sudo apt-get install --yes snapd rpm
+  - export PATH=/snap/bin:$PATH
+  - sudo snap install snapcraft --candidate --classic
 deploy:
   skip_cleanup: true
   provider: script
-  install:
-    - gem install fpm
-    - sudo apt-get update
-    - sudo apt-get install --yes snapd rpm
-    - export PATH=/snap/bin:$PATH
-    - sudo snap install snapcraft --candidate --classic
   script: curl -sL https://git.io/goreleaser | bash
   on:
     tags: true
