@@ -18,7 +18,7 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: rvm $TRAVIS_RUBY_VERSION do curl -sL https://git.io/goreleaser | bash
+  script: curl -sL https://git.io/goreleaser | rvm $TRAVIS_RUBY_VERSION do bash
   on:
     tags: true
 notifications:
