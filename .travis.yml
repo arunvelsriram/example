@@ -18,7 +18,7 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: echo $PATH
+  script: which fpm
   # curl -sL https://git.io/goreleaser | bash
   on:
     tags: true
