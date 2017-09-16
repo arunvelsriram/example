@@ -2,7 +2,6 @@ dist: trusty
 sudo: required
 language: go
 go: 1.9
-rvm: 2.4
 services:
   - docker
 install: go get ./...
@@ -19,7 +18,7 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: rvm $TRAVIS_RUBY_VERSION do which fpm
+  script: rvm 2.4.1 do which fpm
   on:
     tags: true
 notifications:
