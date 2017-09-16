@@ -1,8 +1,3 @@
-brew:
-  github:
-    owner: goreleaser
-    name: homebrew-tap
-  folder: Formula
 builds:
 - goos:
   - linux
@@ -14,3 +9,25 @@ builds:
 dockers:
   - image: goreleaser/example
     latest: true
+brew:
+  github:
+    owner: goreleaser
+    name: homebrew-tap
+  folder: Formula
+  homepage:  http://goreleaser.github.io
+  description: GoReleaser example repository
+fpm:
+  homepage:  http://goreleaser.github.io
+  description: GoReleaser example repository
+  maintainer: Carlos Alexandro Becker <root@carlosbecker.com>
+  license: MIT
+  vendor: GoReleaser
+  formats:
+    - deb
+    - rpm
+  dependencies:
+    - git
+snapcraft:
+  summary: GoReleaser example repository
+  grade: stable
+  confinement: classic
